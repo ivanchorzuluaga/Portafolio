@@ -1,0 +1,330 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Portafolio de desarrollo web' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+    
+    <title>{title}</title>
+  </head>
+  <body class="bg-decay-darker text-wasteland-sand font-sans overflow-x-hidden antialiased">
+    <!-- Textura de fondo mejorada -->
+    <div class="fixed inset-0 z-0">
+      <!-- Gradiente base más rico -->
+      <div class="absolute inset-0 bg-gradient-to-br from-decay-darker via-decay-dark to-decay-medium"></div>
+      
+      <!-- Textura de ruido -->
+      <div class="absolute inset-0 bg-noise opacity-[0.15]"></div>
+      
+      <!-- Viñeta mejorada -->
+      <div class="absolute inset-0 bg-gradient-to-t from-decay-darker via-transparent to-decay-darker/50 opacity-70"></div>
+      <div class="absolute inset-0" style="box-shadow: inset 0 0 300px rgba(0,0,0,0.8);"></div>
+      
+      <!-- Partículas de polvo mejoradas -->
+      <div class="dust-particles"></div>
+      
+      <!-- Resplandor sutil naranja -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent-ember/[0.02] blur-[120px] rounded-full"></div>
+    </div>
+    
+    <!-- Contenido -->
+    <div class="relative z-10">
+      <slot />
+    </div>
+    
+    <style is:global>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        position: relative;
+        min-height: 100vh;
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Scrollbar personalizada mejorada */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #111111;
+        border-left: 1px solid #2A2A2A;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #FF3B0D 0%, #FF5C2E 100%);
+        border-radius: 6px;
+        border: 2px solid #111111;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #FF5C2E 0%, #FF7D4F 100%);
+        border: 2px solid #1C1C1C;
+      }
+      
+      /* Bordes desgastados mejorados */
+      .worn-border {
+        border: 2px solid #404040;
+        box-shadow: 
+          0 4px 8px rgba(0, 0, 0, 0.7),
+          inset 0 1px 0 rgba(255, 255, 255, 0.04),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+        position: relative;
+        background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, transparent 50%, rgba(0,0,0,0.05) 100%);
+      }
+      
+      .worn-border::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
+        pointer-events: none;
+      }
+      
+      /* Hover effects mejorados */
+      .subtle-hover {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+      }
+      
+      .subtle-hover::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255, 59, 13, 0.06) 0%, transparent 100%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+        border-radius: inherit;
+      }
+      
+      .subtle-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 
+          0 12px 24px rgba(0, 0, 0, 0.9),
+          0 0 30px rgba(255, 59, 13, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 59, 13, 0.4);
+      }
+      
+      .subtle-hover:hover::after {
+        opacity: 1;
+      }
+      
+      /* Efecto de texto desgastado mejorado */
+      .worn-text {
+        text-shadow: 
+          2px 2px 6px rgba(0, 0, 0, 0.95),
+          0 0 15px rgba(255, 59, 13, 0.08);
+        letter-spacing: -0.02em;
+      }
+      
+      /* Texto con acento mejorado */
+      .accent-text {
+        background: linear-gradient(135deg, #FF7D4F 0%, #FF3B0D 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+        display: inline-block;
+        font-weight: 700;
+      }
+      
+      /* Línea decorativa mejorada */
+      .accent-line {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .accent-line::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #FF3B0D 0%, #FF5C2E 50%, transparent 100%);
+        box-shadow: 0 0 15px rgba(255, 59, 13, 0.4);
+      }
+      
+      /* Partículas de polvo mejoradas */
+      .dust-particles {
+        position: absolute;
+        inset: 0;
+        background-image: 
+          radial-gradient(circle at 20% 30%, rgba(212, 201, 176, 0.04) 1px, transparent 1px),
+          radial-gradient(circle at 80% 70%, rgba(212, 201, 176, 0.03) 1px, transparent 1px),
+          radial-gradient(circle at 40% 90%, rgba(212, 201, 176, 0.035) 1px, transparent 1px),
+          radial-gradient(circle at 60% 20%, rgba(212, 201, 176, 0.03) 1px, transparent 1px);
+        background-size: 200px 200px, 300px 300px, 250px 250px, 350px 350px;
+        animation: dust 35s linear infinite;
+        opacity: 0.5;
+      }
+      
+      @keyframes dust {
+        0% { transform: translateY(0) translateX(0); }
+        100% { transform: translateY(50px) translateX(30px); }
+      }
+      
+      /* Efecto de selección mejorado */
+      ::selection {
+        background: rgba(255, 59, 13, 0.35);
+        color: #FFE5DD;
+        text-shadow: 0 0 8px rgba(255, 59, 13, 0.5);
+      }
+      
+      /* Scanlines sutiles mejorados */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.08),
+          rgba(0, 0, 0, 0.08) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.12;
+      }
+      
+      /* Animaciones de entrada */
+      .animate-on-scroll {
+        opacity: 0;
+      }
+      
+      .animate-on-scroll.visible {
+        animation: fadeUp 0.8s ease-out forwards;
+      }
+      
+      /* Efecto de brillo en bordes mejorado */
+      .glow-border {
+        position: relative;
+        border: 2px solid rgba(255, 59, 13, 0.35);
+        box-shadow: 
+          0 0 15px rgba(255, 59, 13, 0.15),
+          inset 0 0 15px rgba(255, 59, 13, 0.06);
+      }
+      
+      .glow-border:hover {
+        border-color: rgba(255, 59, 13, 0.6);
+        box-shadow: 
+          0 0 25px rgba(255, 59, 13, 0.3),
+          inset 0 0 20px rgba(255, 59, 13, 0.1);
+      }
+      
+      /* Mejoras tipográficas */
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 800;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+      
+      p {
+        line-height: 1.7;
+      }
+      
+      /* Botones mejorados */
+      button, .button {
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      
+      /* Links mejorados */
+      a {
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      
+      /* Mejora de contraste para texto */
+      .text-wasteland-sand {
+        color: #D4C9B0;
+      }
+      
+      .text-wasteland-sand\/70 {
+        color: rgba(212, 201, 176, 0.7);
+      }
+      
+      .text-wasteland-sand\/80 {
+        color: rgba(212, 201, 176, 0.8);
+      }
+      
+      .text-wasteland-sand\/90 {
+        color: rgba(212, 201, 176, 0.9);
+      }
+      
+      /* Fondos con mejor contraste */
+      .bg-decay-dark\/70 {
+        background-color: rgba(28, 28, 28, 0.7);
+      }
+      
+      .bg-decay-dark\/90 {
+        background-color: rgba(28, 28, 28, 0.9);
+      }
+      
+      /* Backdrop blur mejorado */
+      .backdrop-blur-sm {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+      
+      .backdrop-blur-md {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+    </style>
+    
+    <script>
+      // Animaciones al hacer scroll mejoradas
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.querySelectorAll('.animate-on-scroll');
+        elements.forEach(el => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>

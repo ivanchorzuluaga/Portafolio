@@ -1,0 +1,59 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="relative py-16 px-4 border-t-2 border-wasteland-concrete/40 bg-decay-darker/98 backdrop-blur-sm shadow-2xl shadow-black/70">
+  <div class="max-w-6xl mx-auto">
+    <!-- Contenido principal del footer mejorado -->
+    <div class="flex flex-col md:flex-row justify-between items-center gap-10 mb-12">
+      <!-- Marca mejorada -->
+      <div class="text-center md:text-left">
+        <div class="flex items-center gap-4 mb-4 justify-center md:justify-start">
+          <img 
+            src="/logo.png" 
+            alt="Logo" 
+            class="h-12 md:h-14 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity drop-shadow-[0_4px_12px_rgba(255,59,13,0.2)]"
+          />
+        </div>
+        <p class="font-mono text-wasteland-sand/60 text-sm font-medium">
+          © {currentYear} • Construido con <span class="text-accent-ember">Astro</span> & <span class="text-accent-ember">Bun</span>
+        </p>
+      </div>
+      
+      <!-- Links rápidos mejorados */}
+      <div class="flex items-center gap-6">
+        <a 
+          href="#hero" 
+          class="group flex items-center gap-3 px-6 py-3 border-2 border-wasteland-concrete/50 hover:border-accent-ember/60 rounded-lg hover:bg-accent-ember/10 transition-all font-mono text-sm uppercase tracking-wide shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-accent-ember/20 hover:scale-[1.02]"
+        >
+          <svg class="w-5 h-5 text-wasteland-olive group-hover:text-accent-ember transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+          </svg>
+          <span class="text-wasteland-sand/70 group-hover:text-accent-ember transition-colors font-bold">Volver arriba</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Divisor decorativo mejorado -->
+    <div class="relative w-full h-px mb-8">
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-accent-ember/30 to-transparent shadow-[0_0_15px_rgba(255,59,13,0.2)]"></div>
+    </div>
+    
+    <!-- Mensaje final mejorado */}
+    <div class="text-center">
+      <p class="font-mono text-xs text-wasteland-sand/40 uppercase tracking-[0.3em] mb-3">
+        [ Construido en la era post-digital ]
+      </p>
+      <div class="flex items-center justify-center gap-3">
+        <div class="w-2 h-2 rounded-full bg-accent-ember/50 animate-flicker"></div>
+        <p class="font-mono text-xs text-wasteland-sand/30 uppercase tracking-wider">
+          Made with <span class="text-accent-ember">passion</span> & <span class="text-accent-ember">code</span>
+        </p>
+        <div class="w-2 h-2 rounded-full bg-accent-ember/50 animate-flicker" style="animation-delay: 0.5s;"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Efecto de brillo sutil mejorado -->
+  <div class="absolute top-0 left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-accent-ember/40 to-transparent shadow-[0_0_20px_rgba(255,59,13,0.3)]"></div>
+</footer>

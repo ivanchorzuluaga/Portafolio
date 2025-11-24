@@ -1,0 +1,80 @@
+---
+import { skills } from '@data/portfolio';
+
+const skillsByCategory = {
+  frontend: skills.filter(s => s.category === 'frontend'),
+  backend: skills.filter(s => s.category === 'backend'),
+  tools: skills.filter(s => s.category === 'tools'),
+};
+
+const categoryNames = {
+  frontend: 'Frontend',
+  backend: 'Backend',
+  tools: 'Herramientas',
+};
+---
+
+<section id="skills" class="py-20 px-4">
+  <div class="max-w-4xl mx-auto">
+    <!-- Título -->
+    <div class="mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-2 worn-text text-wasteland-sand">
+        Skills
+      </h2>
+      <div class="w-16 h-0.5 bg-wasteland-rust"></div>
+    </div>
+    
+    <!-- Grid de categorías -->
+    <div class="space-y-8">
+      {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
+        <div class="worn-border rounded bg-decay-dark/50 backdrop-blur-sm p-6">
+          <h3 class="text-xl font-bold text-wasteland-sand mb-4">
+            {categoryNames[category as keyof typeof categoryNames]}
+          </h3>
+          
+          <div class="space-y-3">
+            {categorySkills.map((skill) => (
+              <div>
+                <div class="flex justify-between items-center mb-1">
+                  <span class="font-mono text-wasteland-sand/90 text-sm">{skill.name}</span>
+                  <span class="font-mono text-wasteland-olive text-xs">{skill.level}%</span>
+                </div>
+                
+                {/* Barra de progreso */}
+                <div class="h-1.5 bg-decay-medium rounded overflow-hidden border border-wasteland-metal/30">
+                  <div 
+                    class="h-full bg-wasteland-rust rounded transition-all duration-1000 skill-bar"
+                    data-level={skill.level}
+                    style={`width: 0%`}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bars = entry.target.querySelectorAll('.skill-bar');
+        bars.forEach((bar) => {
+          const level = bar.getAttribute('data-level');
+          setTimeout(() => {
+            (bar as HTMLElement).style.width = `${level}%`;
+          }, 100);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  
+  const skillsSection = document.getElementById('skills');
+  if (skillsSection) {
+    observer.observe(skillsSection);
+  }
+</script>
