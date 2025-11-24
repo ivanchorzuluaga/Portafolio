@@ -20,37 +20,37 @@ const { projectId, images, projectTitle } = Astro.props;
   <span class="text-sm">Imágenes ({images.length})</span>
 </button>
 
-<!-- Modal de galería -->
+<!-- Modal de galería responsive -->
 <div 
-  class="gallery-modal fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center p-4"
+  class="gallery-modal fixed inset-0 bg-black/95 backdrop-blur-md z-[100] hidden items-center justify-center"
   data-project-id={projectId}
   role="dialog"
   aria-modal="true"
   aria-label={`Galería de ${projectTitle}`}
 >
-  <div class="relative max-w-7xl w-full h-full flex flex-col">
-    <!-- Header -->
-    <div class="flex items-center justify-between mb-6">
-      <div>
-        <h3 class="text-2xl md:text-3xl font-black text-wasteland-sand mb-2">{projectTitle}</h3>
-        <p class="text-wasteland-sand/60 font-mono text-sm">
+  <div class="relative w-full h-full max-w-7xl flex flex-col p-4 sm:p-6 md:p-8">
+    <!-- Header responsive -->
+    <div class="flex items-center justify-between mb-4 sm:mb-6">
+      <div class="flex-1 min-w-0 mr-4">
+        <h3 class="text-xl sm:text-2xl md:text-3xl font-black text-wasteland-sand mb-1 sm:mb-2 truncate">{projectTitle}</h3>
+        <p class="text-wasteland-sand/60 font-mono text-xs sm:text-sm">
           <span class="gallery-current">1</span> / <span class="gallery-total">{images.length}</span>
         </p>
       </div>
       
-      <!-- Botón cerrar -->
+      <!-- Botón cerrar responsive -->
       <button 
-        class="gallery-close w-12 h-12 rounded-lg border-2 border-accent-ember/50 hover:border-accent-ember bg-accent-ember/10 hover:bg-accent-ember/20 flex items-center justify-center transition-all shadow-lg shadow-accent-ember/20"
+        class="gallery-close flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg border-2 border-accent-ember/50 hover:border-accent-ember bg-accent-ember/10 hover:bg-accent-ember/20 flex items-center justify-center transition-all shadow-lg shadow-accent-ember/20"
         aria-label="Cerrar galería"
       >
-        <svg class="w-6 h-6 text-accent-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-accent-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
     </div>
     
-    <!-- Contenedor de imagen -->
-    <div class="relative flex-1 flex items-center justify-center mb-6">
+    <!-- Contenedor de imagen responsive -->
+    <div class="relative flex-1 flex items-center justify-center mb-4 sm:mb-6 min-h-0">
       {images.map((image, index) => (
         <div 
           class={`gallery-image absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
@@ -59,29 +59,29 @@ const { projectId, images, projectTitle } = Astro.props;
           <img 
             src={image}
             alt={`${projectTitle} - Imagen ${index + 1}`}
-            class="max-w-full max-h-full object-contain rounded-lg shadow-2xl shadow-black/80 border-2 border-wasteland-concrete"
+            class="max-w-full max-h-full w-auto h-auto object-contain rounded-lg shadow-2xl shadow-black/80 border-2 border-wasteland-concrete"
             loading="lazy"
           />
         </div>
       ))}
       
-      <!-- Navegación -->
+      <!-- Navegación responsive -->
       {images.length > 1 && (
         <>
           <button 
-            class="gallery-prev absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-lg border-2 border-accent-ember/50 hover:border-accent-ember bg-decay-darker/90 hover:bg-accent-ember/20 backdrop-blur-sm flex items-center justify-center transition-all shadow-xl shadow-black/50 hover:shadow-accent-ember/30"
+            class="gallery-prev absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg border-2 border-accent-ember/50 hover:border-accent-ember bg-decay-darker/95 hover:bg-accent-ember/20 backdrop-blur-sm flex items-center justify-center transition-all shadow-xl shadow-black/50 hover:shadow-accent-ember/30 active:scale-95"
             aria-label="Imagen anterior"
           >
-            <svg class="w-7 h-7 text-accent-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-accent-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
             </svg>
           </button>
           
           <button 
-            class="gallery-next absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-lg border-2 border-accent-ember/50 hover:border-accent-ember bg-decay-darker/90 hover:bg-accent-ember/20 backdrop-blur-sm flex items-center justify-center transition-all shadow-xl shadow-black/50 hover:shadow-accent-ember/30"
+            class="gallery-next absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg border-2 border-accent-ember/50 hover:border-accent-ember bg-decay-darker/95 hover:bg-accent-ember/20 backdrop-blur-sm flex items-center justify-center transition-all shadow-xl shadow-black/50 hover:shadow-accent-ember/30 active:scale-95"
             aria-label="Imagen siguiente"
           >
-            <svg class="w-7 h-7 text-accent-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-accent-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
             </svg>
           </button>
@@ -89,41 +89,69 @@ const { projectId, images, projectTitle } = Astro.props;
       )}
     </div>
     
-    <!-- Thumbnails -->
+    <!-- Thumbnails responsive -->
     {images.length > 1 && (
-      <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
-        {images.map((image, index) => (
-          <button 
-            class="gallery-thumb flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all hover:border-accent-ember"
-            class:list={[index === 0 ? 'border-accent-ember shadow-lg shadow-accent-ember/30' : 'border-wasteland-concrete/50']}
-            data-index={index}
-            aria-label={`Ver imagen ${index + 1}`}
-          >
-            <img 
-              src={image}
-              alt={`Thumbnail ${index + 1}`}
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </button>
-        ))}
+      <div class="gallery-thumbnails-container overflow-x-auto overflow-y-hidden pb-2 -mx-4 px-4 sm:-mx-6 sm:px-6 md:-mx-8 md:px-8">
+        <div class="flex gap-2 sm:gap-3 min-w-min">
+          {images.map((image, index) => (
+            <button 
+              class="gallery-thumb flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-lg overflow-hidden border-2 transition-all hover:border-accent-ember active:scale-95"
+              class:list={[index === 0 ? 'border-accent-ember shadow-lg shadow-accent-ember/30' : 'border-wasteland-concrete/50']}
+              data-index={index}
+              aria-label={`Ver imagen ${index + 1}`}
+            >
+              <img 
+                src={image}
+                alt={`Thumbnail ${index + 1}`}
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </button>
+          ))}
+        </div>
       </div>
     )}
   </div>
 </div>
 
 <style>
-  .scrollbar-thin::-webkit-scrollbar {
+  /* Scrollbar para thumbnails */
+  .gallery-thumbnails-container::-webkit-scrollbar {
     height: 6px;
   }
   
-  .scrollbar-thin::-webkit-scrollbar-track {
+  .gallery-thumbnails-container::-webkit-scrollbar-track {
     background: #1C1C1C;
   }
   
-  .scrollbar-thin::-webkit-scrollbar-thumb {
+  .gallery-thumbnails-container::-webkit-scrollbar-thumb {
     background: linear-gradient(90deg, #FF3B0D 0%, #FF5C2E 100%);
     border-radius: 3px;
+  }
+  
+  /* Asegurar que las imágenes no se desborden */
+  .gallery-image img {
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 200px);
+  }
+  
+  @media (min-width: 640px) {
+    .gallery-image img {
+      max-width: calc(100vw - 4rem);
+      max-height: calc(100vh - 220px);
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .gallery-image img {
+      max-width: calc(100vw - 6rem);
+      max-height: calc(100vh - 250px);
+    }
+  }
+  
+  /* Prevenir scroll del body cuando el modal está abierto */
+  body.gallery-open {
+    overflow: hidden;
   }
 </style>
 
@@ -141,6 +169,8 @@ const { projectId, images, projectTitle } = Astro.props;
     const currentDisplay = modal.querySelector('.gallery-current');
     
     let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
     
     // Función para mostrar imagen
     const showImage = (index) => {
@@ -159,6 +189,11 @@ const { projectId, images, projectTitle } = Astro.props;
         if (i === index) {
           thumb.classList.add('border-accent-ember', 'shadow-lg', 'shadow-accent-ember/30');
           thumb.classList.remove('border-wasteland-concrete/50');
+          
+          // Scroll al thumbnail activo (solo en móvil/tablet)
+          if (window.innerWidth < 1024) {
+            thumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          }
         } else {
           thumb.classList.remove('border-accent-ember', 'shadow-lg', 'shadow-accent-ember/30');
           thumb.classList.add('border-wasteland-concrete/50');
@@ -175,6 +210,7 @@ const { projectId, images, projectTitle } = Astro.props;
     trigger.addEventListener('click', () => {
       modal.classList.remove('hidden');
       modal.classList.add('flex');
+      document.body.classList.add('gallery-open');
       document.body.style.overflow = 'hidden';
     });
     
@@ -182,6 +218,7 @@ const { projectId, images, projectTitle } = Astro.props;
     const closeModal = () => {
       modal.classList.add('hidden');
       modal.classList.remove('flex');
+      document.body.classList.remove('gallery-open');
       document.body.style.overflow = '';
     };
     
@@ -194,14 +231,14 @@ const { projectId, images, projectTitle } = Astro.props;
       }
     });
     
-    // Cerrar al hacer clic fuera
+    // Cerrar al hacer clic fuera (solo en desktop)
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
+      if (e.target === modal && window.innerWidth >= 768) {
         closeModal();
       }
     });
     
-    // Navegación
+    // Navegación con botones
     prevBtn?.addEventListener('click', () => {
       const newIndex = (currentIndex - 1 + images.length) % images.length;
       showImage(newIndex);
@@ -223,6 +260,34 @@ const { projectId, images, projectTitle } = Astro.props;
       }
     });
     
+    // Soporte táctil para swipe en móvil
+    const imageContainer = modal.querySelector('.relative.flex-1');
+    
+    if (imageContainer) {
+      imageContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      
+      imageContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+    }
+    
+    const handleSwipe = () => {
+      const swipeThreshold = 50; // Mínimo de 50px para considerar un swipe
+      
+      if (touchEndX < touchStartX - swipeThreshold) {
+        // Swipe left - siguiente imagen
+        nextBtn?.click();
+      }
+      
+      if (touchEndX > touchStartX + swipeThreshold) {
+        // Swipe right - imagen anterior
+        prevBtn?.click();
+      }
+    };
+    
     // Click en thumbnails
     thumbs.forEach((thumb, index) => {
       thumb.addEventListener('click', () => {
@@ -231,4 +296,3 @@ const { projectId, images, projectTitle } = Astro.props;
     });
   }
 </script>
-

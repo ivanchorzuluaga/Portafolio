@@ -2,89 +2,89 @@
 import { personalInfo } from '@data/portfolio';
 ---
 
-<section id="contact" class="py-24 px-4 relative">
+<section id="contact" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden">
   <!-- Elemento decorativo mejorado -->
-  <div class="absolute bottom-20 right-0 w-[500px] h-[500px] bg-accent-ember/[0.08] rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-20 -right-20 sm:right-0 w-80 sm:w-[500px] h-80 sm:h-[500px] bg-accent-ember/[0.08] rounded-full blur-3xl pointer-events-none"></div>
   
   <div class="max-w-4xl mx-auto">
-    <!-- Título mejorado -->
-    <div class="mb-20 animate-on-scroll">
-      <div class="flex items-center gap-5 mb-5">
-        <span class="text-accent-ember font-mono text-base font-bold px-4 py-2 bg-accent-ember/10 border-2 border-accent-ember/30 rounded-lg shadow-lg shadow-accent-ember/10">[ 04 ]</span>
-        <h2 class="text-5xl md:text-6xl lg:text-7xl font-black worn-text text-wasteland-sand">
+    <!-- Título mejorado responsive -->
+    <div class="mb-12 sm:mb-16 md:mb-20 animate-on-scroll">
+      <div class="flex flex-col xs:flex-row xs:items-center gap-3 sm:gap-5 mb-4 sm:mb-5">
+        <span class="text-accent-ember font-mono text-sm sm:text-base font-bold px-3 sm:px-4 py-1.5 sm:py-2 bg-accent-ember/10 border-2 border-accent-ember/30 rounded-lg shadow-lg shadow-accent-ember/10 w-fit">[ 04 ]</span>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black worn-text text-wasteland-sand">
           Contacto
         </h2>
       </div>
-      <div class="flex items-center gap-5 mb-8 ml-20">
-        <div class="w-24 h-1.5 bg-gradient-to-r from-accent-ember via-accent-amber to-transparent shadow-[0_0_15px_rgba(255,59,13,0.3)]"></div>
-        <p class="text-wasteland-sand/70 font-medium text-base">Trabajemos juntos</p>
+      <div class="flex items-center gap-3 sm:gap-5 mb-6 sm:mb-8 ml-0 xs:ml-16 sm:ml-20">
+        <div class="w-16 sm:w-24 h-1 sm:h-1.5 bg-gradient-to-r from-accent-ember via-accent-amber to-transparent shadow-[0_0_15px_rgba(255,59,13,0.3)]"></div>
+        <p class="text-wasteland-sand/70 font-medium text-sm sm:text-base">Trabajemos juntos</p>
       </div>
-      <p class="text-xl md:text-2xl text-wasteland-sand/80 max-w-2xl leading-relaxed ml-20">
+      <p class="text-lg sm:text-xl md:text-2xl text-wasteland-sand/80 max-w-2xl leading-relaxed ml-0 xs:ml-16 sm:ml-20">
         ¿Tienes un proyecto en mente? Estoy disponible para nuevas oportunidades y colaboraciones.
       </p>
     </div>
     
     <div class="animate-on-scroll" style="animation-delay: 0.2s;">
-      <div class="worn-border rounded-lg bg-decay-dark/80 backdrop-blur-sm p-10 md:p-12 subtle-hover shadow-2xl shadow-black/60">
-        {/* Información de contacto mejorada */}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-          {/* Email mejorado */}
+      <div class="worn-border rounded-lg bg-decay-dark/80 backdrop-blur-sm p-6 sm:p-8 md:p-10 lg:p-12 subtle-hover shadow-2xl shadow-black/60">
+        {/* Información de contacto mejorada responsive */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10">
+          {/* Email mejorado responsive */}
           <div class="group">
-            <div class="flex items-start gap-5">
-              <div class="w-16 h-16 rounded-lg border-2 border-accent-ember/40 bg-accent-ember/8 flex items-center justify-center flex-shrink-0 group-hover:border-accent-ember/60 group-hover:bg-accent-ember/15 transition-all shadow-lg shadow-accent-ember/10 group-hover:shadow-xl group-hover:shadow-accent-ember/20">
-                <svg class="w-7 h-7 text-accent-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+            <div class="flex items-start gap-4 sm:gap-5">
+              <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg border-2 border-accent-ember/40 bg-accent-ember/8 flex items-center justify-center flex-shrink-0 group-hover:border-accent-ember/60 group-hover:bg-accent-ember/15 transition-all shadow-lg shadow-accent-ember/10 group-hover:shadow-xl group-hover:shadow-accent-ember/20">
+                <svg class="w-6 sm:w-7 h-6 sm:h-7 text-accent-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
               </div>
-              <div>
+              <div class="min-w-0 flex-1">
                 <p class="text-xs text-wasteland-sand/60 font-bold mb-2 uppercase tracking-wider">Email</p>
-                <a href={`mailto:${personalInfo.email}`} class="text-wasteland-sand hover:text-accent-ember transition-colors font-semibold text-base md:text-lg break-all">
+                <a href={`mailto:${personalInfo.email}`} class="text-wasteland-sand hover:text-accent-ember transition-colors font-semibold text-sm sm:text-base md:text-lg break-all">
                   {personalInfo.email}
                 </a>
               </div>
             </div>
           </div>
           
-          {/* Ubicación mejorada */}
+          {/* Ubicación mejorada responsive */}
           <div class="group">
-            <div class="flex items-start gap-5">
-              <div class="w-16 h-16 rounded-lg border-2 border-accent-ember/40 bg-accent-ember/8 flex items-center justify-center flex-shrink-0 group-hover:border-accent-ember/60 group-hover:bg-accent-ember/15 transition-all shadow-lg shadow-accent-ember/10 group-hover:shadow-xl group-hover:shadow-accent-ember/20">
-                <svg class="w-7 h-7 text-accent-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+            <div class="flex items-start gap-4 sm:gap-5">
+              <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg border-2 border-accent-ember/40 bg-accent-ember/8 flex items-center justify-center flex-shrink-0 group-hover:border-accent-ember/60 group-hover:bg-accent-ember/15 transition-all shadow-lg shadow-accent-ember/10 group-hover:shadow-xl group-hover:shadow-accent-ember/20">
+                <svg class="w-6 sm:w-7 h-6 sm:h-7 text-accent-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
               </div>
               <div>
                 <p class="text-xs text-wasteland-sand/60 font-bold mb-2 uppercase tracking-wider">Ubicación</p>
-                <p class="text-wasteland-sand font-semibold text-base md:text-lg">{personalInfo.location}</p>
+                <p class="text-wasteland-sand font-semibold text-sm sm:text-base md:text-lg break-words">{personalInfo.location}</p>
               </div>
             </div>
           </div>
         </div>
         
         {/* Divisor mejorado */}
-        <div class="relative w-full h-px my-10">
+        <div class="relative w-full h-px my-8 sm:my-10">
           <div class="absolute inset-0 bg-gradient-to-r from-transparent via-accent-ember/40 to-transparent shadow-[0_0_15px_rgba(255,59,13,0.3)]"></div>
         </div>
         
-        {/* Redes sociales mejoradas */}
+        {/* Redes sociales mejoradas responsive */}
         <div>
-          <p class="text-xs text-wasteland-sand/60 mb-8 font-bold uppercase tracking-wider flex items-center gap-2">
-            <span class="w-1 h-4 bg-accent-ember"></span>
+          <p class="text-xs text-wasteland-sand/60 mb-6 sm:mb-8 font-bold uppercase tracking-wider flex items-center gap-2">
+            <span class="w-1 h-3 sm:h-4 bg-accent-ember"></span>
             Encuéntrame en
           </p>
-          <div class="flex flex-wrap gap-4">
+          <div class="flex flex-col xs:flex-row flex-wrap gap-3 sm:gap-4">
             <a 
               href={personalInfo.social.github} 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="group flex items-center gap-4 px-6 py-4 border-2 border-wasteland-concrete hover:border-accent-ember rounded-lg transition-all hover:bg-accent-ember/10 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-accent-ember/20 hover:scale-[1.02]"
+              class="group flex items-center gap-3 sm:gap-4 px-5 sm:px-6 py-3 sm:py-4 border-2 border-wasteland-concrete hover:border-accent-ember rounded-lg transition-all hover:bg-accent-ember/10 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-accent-ember/20 active:scale-95 sm:hover:scale-[1.02]"
             >
-              <svg class="w-6 h-6 text-wasteland-olive group-hover:text-accent-ember transition-colors" fill="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 sm:w-6 h-5 sm:h-6 text-wasteland-olive group-hover:text-accent-ember transition-colors flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
               </svg>
-              <span class="font-bold text-base text-wasteland-sand group-hover:text-accent-ember transition-colors">GitHub</span>
-              <svg class="w-5 h-5 text-wasteland-olive group-hover:text-accent-ember group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+              <span class="font-bold text-sm sm:text-base text-wasteland-sand group-hover:text-accent-ember transition-colors">GitHub</span>
+              <svg class="w-4 sm:w-5 h-4 sm:h-5 text-wasteland-olive group-hover:text-accent-ember group-hover:translate-x-1 transition-all ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
               </svg>
             </a>
@@ -93,27 +93,27 @@ import { personalInfo } from '@data/portfolio';
               href={personalInfo.social.linkedin} 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="group flex items-center gap-4 px-6 py-4 border-2 border-wasteland-concrete hover:border-accent-ember rounded-lg transition-all hover:bg-accent-ember/10 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-accent-ember/20 hover:scale-[1.02]"
+              class="group flex items-center gap-3 sm:gap-4 px-5 sm:px-6 py-3 sm:py-4 border-2 border-wasteland-concrete hover:border-accent-ember rounded-lg transition-all hover:bg-accent-ember/10 shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-accent-ember/20 active:scale-95 sm:hover:scale-[1.02]"
             >
-              <svg class="w-6 h-6 text-wasteland-olive group-hover:text-accent-ember transition-colors" fill="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 sm:w-6 h-5 sm:h-6 text-wasteland-olive group-hover:text-accent-ember transition-colors flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
-              <span class="font-bold text-base text-wasteland-sand group-hover:text-accent-ember transition-colors">LinkedIn</span>
-              <svg class="w-5 h-5 text-wasteland-olive group-hover:text-accent-ember group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+              <span class="font-bold text-sm sm:text-base text-wasteland-sand group-hover:text-accent-ember transition-colors">LinkedIn</span>
+              <svg class="w-4 sm:w-5 h-4 sm:h-5 text-wasteland-olive group-hover:text-accent-ember group-hover:translate-x-1 transition-all ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
               </svg>
             </a>
           </div>
         </div>
         
-        {/* Estado de disponibilidad mejorado */}
-        <div class="mt-10 pt-10 border-t-2 border-wasteland-concrete/40">
-          <div class="flex items-center gap-4 p-5 bg-accent-ember/10 border-2 border-accent-ember/30 rounded-lg shadow-lg shadow-accent-ember/10">
-            <div class="relative">
-              <div class="w-4 h-4 rounded-full bg-accent-ember animate-glow-pulse shadow-[0_0_15px_rgba(255,59,13,0.8)]"></div>
-              <div class="absolute inset-0 w-4 h-4 rounded-full bg-accent-ember animate-ping"></div>
+        {/* Estado de disponibilidad mejorado responsive */}
+        <div class="mt-8 sm:mt-10 pt-8 sm:pt-10 border-t-2 border-wasteland-concrete/40">
+          <div class="flex items-center gap-3 sm:gap-4 p-4 sm:p-5 bg-accent-ember/10 border-2 border-accent-ember/30 rounded-lg shadow-lg shadow-accent-ember/10">
+            <div class="relative flex-shrink-0">
+              <div class="w-3.5 sm:w-4 h-3.5 sm:h-4 rounded-full bg-accent-ember animate-glow-pulse shadow-[0_0_15px_rgba(255,59,13,0.8)]"></div>
+              <div class="absolute inset-0 w-3.5 sm:w-4 h-3.5 sm:h-4 rounded-full bg-accent-ember animate-ping"></div>
             </div>
-            <p class="text-accent-ember font-bold text-base uppercase tracking-wide">
+            <p class="text-accent-ember font-bold text-sm sm:text-base uppercase tracking-wide">
               Disponible para proyectos freelance
             </p>
           </div>

@@ -2,61 +2,61 @@
 import { experience } from '@data/portfolio';
 ---
 
-<section id="experience" class="py-24 px-4 relative">
+<section id="experience" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden">
   <!-- Elemento decorativo mejorado -->
-  <div class="absolute top-40 left-0 w-96 h-96 bg-accent-ember/[0.05] rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute top-40 -left-20 sm:left-0 w-72 sm:w-96 h-72 sm:h-96 bg-accent-ember/[0.05] rounded-full blur-3xl pointer-events-none"></div>
   
   <div class="max-w-5xl mx-auto">
-    <!-- Título mejorado -->
-    <div class="mb-20 animate-on-scroll">
-      <div class="flex items-center gap-5 mb-5">
-        <span class="text-accent-ember font-mono text-base font-bold px-4 py-2 bg-accent-ember/10 border-2 border-accent-ember/30 rounded-lg shadow-lg shadow-accent-ember/10">[ 03 ]</span>
-        <h2 class="text-5xl md:text-6xl lg:text-7xl font-black worn-text text-wasteland-sand">
+    <!-- Título mejorado responsive -->
+    <div class="mb-12 sm:mb-16 md:mb-20 animate-on-scroll">
+      <div class="flex flex-col xs:flex-row xs:items-center gap-3 sm:gap-5 mb-4 sm:mb-5">
+        <span class="text-accent-ember font-mono text-sm sm:text-base font-bold px-3 sm:px-4 py-1.5 sm:py-2 bg-accent-ember/10 border-2 border-accent-ember/30 rounded-lg shadow-lg shadow-accent-ember/10 w-fit">[ 03 ]</span>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black worn-text text-wasteland-sand">
           Experiencia
         </h2>
       </div>
-      <div class="flex items-center gap-5 ml-20">
-        <div class="w-24 h-1.5 bg-gradient-to-r from-accent-ember via-accent-amber to-transparent shadow-[0_0_15px_rgba(255,59,13,0.3)]"></div>
-        <p class="text-wasteland-sand/70 font-medium text-base">Trayectoria profesional</p>
+      <div class="flex items-center gap-3 sm:gap-5 ml-0 xs:ml-16 sm:ml-20">
+        <div class="w-16 sm:w-24 h-1 sm:h-1.5 bg-gradient-to-r from-accent-ember via-accent-amber to-transparent shadow-[0_0_15px_rgba(255,59,13,0.3)]"></div>
+        <p class="text-wasteland-sand/70 font-medium text-sm sm:text-base">Trayectoria profesional</p>
       </div>
     </div>
     
-    <!-- Timeline mejorado -->
+    <!-- Timeline mejorado responsive -->
     <div class="relative">
-      {/* Línea vertical decorativa mejorada */}
-      <div class="absolute left-0 md:left-10 top-0 bottom-0 w-1 bg-gradient-to-b from-accent-ember via-accent-amber to-transparent hidden md:block shadow-[0_0_15px_rgba(255,59,13,0.3)]"></div>
+      {/* Línea vertical decorativa mejorada - solo visible en md+ */}
+      <div class="absolute left-0 md:left-10 top-0 bottom-0 w-0.5 md:w-1 bg-gradient-to-b from-accent-ember via-accent-amber to-transparent hidden md:block shadow-[0_0_15px_rgba(255,59,13,0.3)]"></div>
       
       {/* Items */}
-      <div class="space-y-12 md:space-y-16">
+      <div class="space-y-8 sm:space-y-12 md:space-y-16">
         {experience.map((exp, index) => (
           <article 
             class="relative animate-on-scroll"
             style={`animation-delay: ${index * 0.2}s`}
           >
-            {/* Indicador en timeline mejorado */}
-            <div class="absolute left-0 md:left-[1.625rem] top-10 w-7 h-7 rounded-full border-3 border-accent-ember bg-decay-darker hidden md:flex items-center justify-center shadow-lg shadow-accent-ember/30">
-              <div class="w-3 h-3 rounded-full bg-accent-ember animate-glow-pulse shadow-[0_0_15px_rgba(255,59,13,0.8)]"></div>
+            {/* Indicador en timeline mejorado - solo visible en md+ */}
+            <div class="absolute left-0 md:left-[1.625rem] top-8 sm:top-10 w-6 sm:w-7 h-6 sm:h-7 rounded-full border-3 border-accent-ember bg-decay-darker hidden md:flex items-center justify-center shadow-lg shadow-accent-ember/30">
+              <div class="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-accent-ember animate-glow-pulse shadow-[0_0_15px_rgba(255,59,13,0.8)]"></div>
             </div>
             
-            {/* Tarjeta mejorada */}
-            <div class="md:ml-28 worn-border rounded-lg p-8 md:p-10 bg-decay-dark/80 backdrop-blur-sm hover:bg-decay-dark/90 transition-all subtle-hover shadow-xl shadow-black/50">
-              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-5 mb-6">
+            {/* Tarjeta mejorada responsive */}
+            <div class="md:ml-24 lg:ml-28 worn-border rounded-lg p-6 sm:p-8 md:p-10 bg-decay-dark/80 backdrop-blur-sm hover:bg-decay-dark/90 transition-all subtle-hover shadow-xl shadow-black/50">
+              <div class="flex flex-col gap-4 sm:gap-5 mb-5 sm:mb-6">
                 <div class="flex-1">
-                  {/* Título y empresa mejorados */}
-                  <h3 class="text-3xl md:text-4xl font-black text-accent-glow mb-3 leading-tight">
+                  {/* Título y empresa mejorados responsive */}
+                  <h3 class="text-2xl sm:text-3xl md:text-4xl font-black text-accent-glow mb-2 sm:mb-3 leading-tight break-words">
                     {exp.position}
                   </h3>
-                  <p class="text-wasteland-olive font-bold text-xl flex items-center gap-3">
-                    <svg class="w-5 h-5 text-accent-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                  <p class="text-wasteland-olive font-bold text-lg sm:text-xl flex items-center gap-2 sm:gap-3 flex-wrap">
+                    <svg class="w-4 sm:w-5 h-4 sm:h-5 text-accent-ember flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                     </svg>
-                    {exp.company}
+                    <span class="break-words">{exp.company}</span>
                   </p>
                 </div>
                 
-                {/* Período mejorado */}
-                <span class="inline-flex items-center gap-3 px-5 py-3 bg-accent-ember/10 border-2 border-accent-ember/40 rounded-lg text-sm font-bold text-accent-ember whitespace-nowrap shadow-lg shadow-accent-ember/10">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                {/* Período mejorado responsive */}
+                <span class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 py-2 sm:py-3 bg-accent-ember/10 border-2 border-accent-ember/40 rounded-lg text-xs sm:text-sm font-bold text-accent-ember whitespace-nowrap shadow-lg shadow-accent-ember/10 w-fit">
+                  <svg class="w-3.5 sm:w-4 h-3.5 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                   {exp.period}
@@ -64,22 +64,22 @@ import { experience } from '@data/portfolio';
               </div>
               
               {/* Barra decorativa mejorada */}
-              <div class="w-20 h-1 bg-gradient-to-r from-accent-ember to-accent-amber mb-6 shadow-[0_0_10px_rgba(255,59,13,0.3)]"></div>
+              <div class="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-accent-ember to-accent-amber mb-5 sm:mb-6 shadow-[0_0_10px_rgba(255,59,13,0.3)]"></div>
               
-              {/* Descripción mejorada */}
-              <p class="text-wasteland-sand/85 mb-8 text-base md:text-lg leading-relaxed">
+              {/* Descripción mejorada responsive */}
+              <p class="text-wasteland-sand/85 mb-6 sm:mb-8 text-sm sm:text-base md:text-lg leading-relaxed whitespace-pre-line">
                 {exp.description}
               </p>
               
-              {/* Tecnologías mejoradas */}
+              {/* Tecnologías mejoradas responsive */}
               <div>
-                <p class="text-xs font-bold text-wasteland-sand/60 uppercase tracking-widest mb-4 flex items-center gap-2">
-                  <span class="w-1 h-4 bg-accent-ember"></span>
+                <p class="text-xs font-bold text-wasteland-sand/60 uppercase tracking-widest mb-3 sm:mb-4 flex items-center gap-2">
+                  <span class="w-1 h-3 sm:h-4 bg-accent-ember"></span>
                   Stack Tecnológico
                 </p>
-                <div class="flex flex-wrap gap-3">
+                <div class="flex flex-wrap gap-2 sm:gap-3">
                   {exp.technologies.map((tech) => (
-                    <span class="px-4 py-2 bg-decay-medium/90 border-2 border-wasteland-metal/60 rounded-lg text-sm font-semibold text-wasteland-sand hover:border-accent-ember/40 hover:bg-accent-ember/5 transition-all shadow-sm hover:shadow-lg hover:shadow-accent-ember/10">
+                    <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-decay-medium/90 border-2 border-wasteland-metal/60 rounded-lg text-xs sm:text-sm font-semibold text-wasteland-sand hover:border-accent-ember/40 hover:bg-accent-ember/5 transition-all shadow-sm hover:shadow-lg hover:shadow-accent-ember/10">
                       {tech}
                     </span>
                   ))}
