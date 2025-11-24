@@ -94,7 +94,7 @@ export const projects: Project[] = [
 export const experience: Experience[] = [
   {
     id: "1",
-    company: "F5 instelligence",
+    company: "F5 intelligence",
     position: "CEO | Full Stack Developer",
     period: "2022 - Presente",
     description:
