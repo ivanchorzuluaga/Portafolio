@@ -68,7 +68,7 @@ export const projects: Project[] = [
   },
   {
     id: "3",
-    title: "365 Trade",
+    title: "Trade369",
     description:
       "Plataforma web de monitoreo de rentabilidad para una empresa de trading. Permitía a los clientes consultar su rentabilidad diaria mediante dashboards interactivos y gráficos analíticos. Soportó hasta 55 usuarios activos con datos financieros actualizados desde archivos cargados por el administrador. Incluía visualización de métricas y panel administrativo para la gestión de datos.",
     technologies: ["React", "Python", "Django", "API REST", "PostgreSQL"],
