@@ -1,22 +1,214 @@
 ---
 interface Props {
-  projectLink?: string;
+  id: string;
+  title: string;
+  images: string[];
 }
 
-const { projectLink } = Astro.props;
+const { id, title, images } = Astro.props;
 
-// Si no hay link, no mostramos nada
-if (!projectLink) return null;
+// Si no hay imágenes, no mostramos nada
+if (!images || images.length === 0) return null;
 ---
 
-<a 
-  href={projectLink}
-  target="_blank"
-  rel="noopener noreferrer"
-  class="group/link flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2.5 sm:py-3 border-2 border-wasteland-concrete hover:border-accent-ember rounded-lg text-wasteland-sand hover:text-accent-ember hover:bg-accent-ember/10 transition-all font-bold uppercase tracking-wide shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-accent-ember/20 active:scale-95 sm:hover:scale-[1.02] text-xs sm:text-sm"
->
-  <svg class="w-4 sm:w-5 h-4 sm:h-5 transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-  </svg>
-  <span>Ver Proyecto</span>
-</a>
+<div id={`gallery-${id}`} data-gallery-root data-images={JSON.stringify(images)} data-title={title}>
+  <button
+    type="button"
+    data-gallery-open
+    class="group/link flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2.5 sm:py-3 border-2 border-wasteland-concrete hover:border-accent-ember rounded-lg text-wasteland-sand hover:text-accent-ember hover:bg-accent-ember/10 transition-all font-bold uppercase tracking-wide shadow-lg shadow-black/30 hover:shadow-xl hover:shadow-accent-ember/20 active:scale-95 sm:hover:scale-[1.02] text-xs sm:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ember/70 focus-visible:ring-offset-2 focus-visible:ring-offset-decay-darker"
+    aria-haspopup="dialog"
+    aria-controls={`gallery-modal-${id}`}
+  >
+    <svg class="w-4 sm:w-5 h-4 sm:h-5 transform group-hover/link:rotate-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 7a2 2 0 01-2-2V4a2 2 0 012-2h3l1.5 2h7L17 2h3a2 2 0 012 2v1a2 2 0 01-2 2M4 7v11a2 2 0 002 2h12a2 2 0 002-2V7M9 13l2 2 4-4"/>
+    </svg>
+    <span>Imágenes ({images.length})</span>
+  </button>
+
+  <div
+    id={`gallery-modal-${id}`}
+    data-gallery-modal
+    class="fixed inset-0 z-[60] hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+  >
+    <div data-gallery-backdrop class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+    <div class="relative z-10 h-full w-full px-4 sm:px-6 py-6 flex items-center justify-center">
+      <div class="w-full max-w-5xl bg-decay-darker/95 border-2 border-wasteland-concrete/50 rounded-xl shadow-2xl shadow-black/70 overflow-hidden">
+        <div class="flex items-center justify-between gap-4 px-4 sm:px-6 py-4 border-b border-wasteland-concrete/40">
+          <div class="min-w-0">
+            <p class="text-xs uppercase tracking-widest text-wasteland-sand/60 font-mono mb-1">Galería</p>
+            <h4 data-gallery-title class="text-base sm:text-lg font-bold text-wasteland-sand truncate">
+              {title}
+            </h4>
+          </div>
+          <div class="flex items-center gap-3">
+            <span data-gallery-counter class="text-xs sm:text-sm font-mono text-wasteland-sand/70">1 / {images.length}</span>
+            <button
+              type="button"
+              data-gallery-close
+              class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg border-2 border-wasteland-concrete/60 hover:border-accent-ember/60 hover:bg-accent-ember/10 transition-all text-wasteland-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ember/70 focus-visible:ring-offset-2 focus-visible:ring-offset-decay-darker"
+              aria-label="Cerrar galería"
+            >
+              <svg class="w-4 sm:w-5 h-4 sm:h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="relative bg-decay-dark/70">
+          <img
+            data-gallery-image
+            src={images[0]}
+            alt={title}
+            class="w-full max-h-[70vh] object-contain bg-decay-dark/70"
+            loading="lazy"
+          />
+
+          <button
+            type="button"
+            data-gallery-prev
+            class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-wasteland-concrete/60 hover:border-accent-ember/60 hover:bg-accent-ember/10 transition-all text-wasteland-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ember/70 focus-visible:ring-offset-2 focus-visible:ring-offset-decay-darker"
+            aria-label="Imagen anterior"
+          >
+            <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button
+            type="button"
+            data-gallery-next
+            class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-wasteland-concrete/60 hover:border-accent-ember/60 hover:bg-accent-ember/10 transition-all text-wasteland-sand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ember/70 focus-visible:ring-offset-2 focus-visible:ring-offset-decay-darker"
+            aria-label="Imagen siguiente"
+          >
+            <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="px-4 sm:px-6 py-4 border-t border-wasteland-concrete/40 bg-decay-darker/90">
+          <div class="flex gap-3 overflow-x-auto">
+            {images.map((img, index) => (
+              <button
+                type="button"
+                data-gallery-thumb
+                data-index={index}
+                class={`relative shrink-0 w-16 h-12 sm:w-24 sm:h-16 rounded-lg border-2 ${
+                  index === 0 ? 'border-accent-ember' : 'border-wasteland-concrete/60'
+                } hover:border-accent-ember/60 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ember/70 focus-visible:ring-offset-2 focus-visible:ring-offset-decay-darker`}
+                aria-label={`Ver imagen ${index + 1}`}
+              >
+                <img src={img} alt={`${title} ${index + 1}`} class="w-full h-full object-cover rounded-md" loading="lazy" />
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.currentScript?.previousElementSibling;
+  if (root) {
+    const images = JSON.parse(root.getAttribute("data-images") || "[]");
+    const openBtn = root.querySelector("[data-gallery-open]");
+    const modal = root.querySelector("[data-gallery-modal]");
+    const backdrop = root.querySelector("[data-gallery-backdrop]");
+    const closeBtn = root.querySelector("[data-gallery-close]");
+    const prevBtn = root.querySelector("[data-gallery-prev]");
+    const nextBtn = root.querySelector("[data-gallery-next]");
+    const imgEl = root.querySelector("[data-gallery-image]");
+    const counterEl = root.querySelector("[data-gallery-counter]");
+    const thumbs = root.querySelectorAll("[data-gallery-thumb]");
+    let index = 0;
+    let lastActive = null;
+
+    const getFocusable = () => {
+      if (!modal) return [];
+      return Array.from(
+        modal.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((el) => !el.hasAttribute('disabled'));
+    };
+    
+    const sync = () => {
+      const total = images.length;
+      if (imgEl) imgEl.setAttribute("src", images[index]);
+      if (counterEl) counterEl.textContent = `${index + 1} / ${total}`;
+      thumbs.forEach((thumb) => {
+        const i = Number(thumb.getAttribute("data-index"));
+        thumb.classList.toggle("border-accent-ember", i === index);
+        thumb.classList.toggle("border-wasteland-concrete/60", i !== index);
+      });
+    };
+
+    const open = () => {
+      if (!modal) return;
+      lastActive = document.activeElement;
+      modal.classList.remove("hidden");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      const focusable = getFocusable();
+      (focusable[0] || closeBtn)?.focus();
+      sync();
+    };
+
+    const close = () => {
+      if (!modal) return;
+      modal.classList.add("hidden");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (lastActive && lastActive instanceof HTMLElement) {
+        lastActive.focus();
+      }
+    };
+
+    const next = () => {
+      index = (index + 1) % images.length;
+      sync();
+    };
+
+    const prev = () => {
+      index = (index - 1 + images.length) % images.length;
+      sync();
+    };
+
+    openBtn?.addEventListener("click", open);
+    closeBtn?.addEventListener("click", close);
+    backdrop?.addEventListener("click", close);
+    nextBtn?.addEventListener("click", next);
+    prevBtn?.addEventListener("click", prev);
+
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        index = Number(thumb.getAttribute("data-index"));
+        sync();
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!modal || modal.classList.contains("hidden")) return;
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "Tab") {
+        const focusable = getFocusable();
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+  }
+</script>

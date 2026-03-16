@@ -5,48 +5,58 @@ const skillsByCategory = {
   frontend: skills.filter(s => s.category === 'frontend'),
   backend: skills.filter(s => s.category === 'backend'),
   tools: skills.filter(s => s.category === 'tools'),
+  design: skills.filter(s => s.category === 'design'),
 };
 
 const categoryNames = {
   frontend: 'Frontend',
   backend: 'Backend',
   tools: 'Herramientas',
+  design: 'Manejo de IAs',
 };
 ---
 
-<section id="skills" class="py-20 px-4">
-  <div class="max-w-4xl mx-auto">
+<section id="skills" class="py-10 sm:py-12 px-4">
+  <div class="max-w-5xl mx-auto">
     <!-- Título -->
-    <div class="mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold mb-2 worn-text text-wasteland-sand">
+    <div class="mb-6 sm:mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold mb-2 worn-text text-wasteland-sand">
         Skills
       </h2>
-      <div class="w-16 h-0.5 bg-wasteland-rust"></div>
+      <div class="w-12 h-0.5 bg-wasteland-rust"></div>
     </div>
     
     <!-- Grid de categorías -->
-    <div class="space-y-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
-        <div class="worn-border rounded bg-decay-dark/50 backdrop-blur-sm p-6">
-          <h3 class="text-xl font-bold text-wasteland-sand mb-4">
+        <div class="worn-border rounded bg-decay-dark/50 backdrop-blur-sm p-4">
+          <h3 class="text-base font-bold text-wasteland-sand mb-3">
             {categoryNames[category as keyof typeof categoryNames]}
           </h3>
           
-          <div class="space-y-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {categorySkills.map((skill) => (
-              <div>
-                <div class="flex justify-between items-center mb-1">
-                  <span class="font-mono text-wasteland-sand/90 text-sm">{skill.name}</span>
-                  <span class="font-mono text-wasteland-olive text-xs">{skill.level}%</span>
-                </div>
-                
-                {/* Barra de progreso */}
-                <div class="h-1.5 bg-decay-medium rounded overflow-hidden border border-wasteland-metal/30">
-                  <div 
-                    class="h-full bg-wasteland-rust rounded transition-all duration-1000 skill-bar"
-                    data-level={skill.level}
-                    style={`width: 0%`}
-                  ></div>
+              <div class="flex items-center justify-between gap-3 border border-wasteland-concrete/40 rounded-lg px-2.5 py-1.5 bg-decay-dark/40">
+                <span class="font-mono text-wasteland-sand/90 text-[11px] sm:text-xs truncate">
+                  {skill.name}
+                </span>
+                <div
+                  class="flex items-center gap-0.5"
+                  role="img"
+                  aria-label={`${skill.name} ${skill.level} de 5`}
+                >
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg
+                      class={`w-3 h-3 ${
+                        i < skill.level ? 'text-accent-ember' : 'text-wasteland-concrete/60'
+                      }`}
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M10 15.27L16.18 19l-1.64-7.03L20 7.24l-7.19-.61L10 0 7.19 6.63 0 7.24l5.46 4.73L3.82 19z"/>
+                    </svg>
+                  ))}
                 </div>
               </div>
             ))}
@@ -56,25 +66,3 @@ const categoryNames = {
     </div>
   </div>
 </section>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const bars = entry.target.querySelectorAll('.skill-bar');
-        bars.forEach((bar) => {
-          const level = bar.getAttribute('data-level');
-          setTimeout(() => {
-            (bar as HTMLElement).style.width = `${level}%`;
-          }, 100);
-        });
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  
-  const skillsSection = document.getElementById('skills');
-  if (skillsSection) {
-    observer.observe(skillsSection);
-  }
-</script>

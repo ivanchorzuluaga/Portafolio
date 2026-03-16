@@ -2,21 +2,22 @@
 const navItems = [
   { name: 'Inicio', href: '#hero' },
   { name: 'Proyectos', href: '#projects' },
+  { name: 'Skills', href: '#skills' },
   { name: 'Experiencia', href: '#experience' },
   { name: 'Contacto', href: '#contact' },
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-decay-darker/98 border-b border-wasteland-concrete/40 shadow-lg shadow-black/50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-decay-darker/98 border-b border-wasteland-concrete/40 shadow-lg shadow-black/50" aria-label="Navegación principal">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-14">
       <!-- Logo protagonista -->
       <a href="/" class="group relative flex items-center">
         <div class="relative">
           <img 
             src="/logo.png" 
             alt="Logo" 
-            class="h-12 md:h-14 w-auto object-contain group-hover:scale-105 transition-all duration-300 drop-shadow-[0_4px_12px_rgba(255,59,13,0.3)] group-hover:drop-shadow-[0_6px_20px_rgba(255,59,13,0.5)] group-hover:brightness-110 filter"
+            class="h-10 md:h-12 w-auto object-contain group-hover:scale-105 transition-all duration-300 drop-shadow-[0_4px_12px_rgba(255,59,13,0.3)] group-hover:drop-shadow-[0_6px_20px_rgba(255,59,13,0.5)] group-hover:brightness-110 filter"
           />
           </div>
       </a>
@@ -26,10 +27,10 @@ const navItems = [
         {navItems.map((item, index) => (
           <a 
             href={item.href}
-            class="group relative px-5 py-2.5 text-wasteland-sand hover:text-accent-ember transition-colors duration-300 font-medium text-sm uppercase tracking-wider"
+            class="group relative px-4 py-2 text-wasteland-sand hover:text-accent-ember transition-colors duration-300 font-medium text-xs uppercase tracking-wider focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ember/70 focus-visible:ring-offset-2 focus-visible:ring-offset-decay-darker"
           >
-            <span class="relative z-10 flex items-center gap-2.5">
-              <span class="text-accent-ember/60 text-xs font-mono group-hover:text-accent-ember">[0{index + 1}]</span>
+            <span class="relative z-10 flex items-center gap-2">
+              <span class="text-accent-ember/60 text-[10px] font-mono group-hover:text-accent-ember">[0{index + 1}]</span>
               <span class="group-hover:tracking-widest transition-all duration-300">{item.name}</span>
             </span>
             <!-- Barra inferior animada con mejor visibilidad -->
@@ -44,10 +45,12 @@ const navItems = [
       <!-- Mobile menu button con mejor visibilidad -->
       <button 
         id="mobile-menu-btn"
-        class="md:hidden border-2 border-wasteland-concrete/50 hover:border-accent-ember/60 rounded-lg p-2.5 hover:bg-accent-ember/10 transition-all shadow-lg shadow-black/30"
+        class="md:hidden border-2 border-wasteland-concrete/50 hover:border-accent-ember/60 rounded-lg p-2 hover:bg-accent-ember/10 transition-all shadow-lg shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ember/70 focus-visible:ring-offset-2 focus-visible:ring-offset-decay-darker"
         aria-label="Toggle menu"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
       >
-        <svg class="w-5 h-5 text-wasteland-sand" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+        <svg class="w-4.5 h-4.5 text-wasteland-sand" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
@@ -55,12 +58,16 @@ const navItems = [
   </div>
   
   <!-- Mobile menu mejorado -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-wasteland-concrete/40 bg-decay-darker/99 backdrop-blur-md shadow-2xl shadow-black/60">
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-wasteland-concrete/40 bg-decay-darker/99 backdrop-blur-md shadow-2xl shadow-black/60"
+    aria-hidden="true"
+  >
     <div class="px-4 pt-3 pb-4 space-y-2">
       {navItems.map((item, index) => (
         <a 
           href={item.href}
-          class="block px-5 py-3.5 rounded-lg text-base font-medium text-wasteland-sand hover:text-accent-ember hover:bg-accent-ember/10 transition-all border-2 border-transparent hover:border-accent-ember/30 shadow-sm hover:shadow-lg hover:shadow-accent-ember/10"
+          class="block px-5 py-3.5 rounded-lg text-base font-medium text-wasteland-sand hover:text-accent-ember hover:bg-accent-ember/10 transition-all border-2 border-transparent hover:border-accent-ember/30 shadow-sm hover:shadow-lg hover:shadow-accent-ember/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ember/70 focus-visible:ring-offset-2 focus-visible:ring-offset-decay-darker"
         >
           <span class="text-accent-ember/60 text-sm mr-3 font-mono">[0{index + 1}]</span>
           <span class="uppercase tracking-wide">{item.name}</span>
@@ -74,15 +81,35 @@ const navItems = [
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   
+  const setMenuState = (open) => {
+    if (!mobileMenu || !mobileMenuBtn) return;
+    mobileMenu.classList.toggle('hidden', !open);
+    mobileMenu.setAttribute('aria-hidden', String(!open));
+    mobileMenuBtn.setAttribute('aria-expanded', String(open));
+    if (open) {
+      const firstLink = mobileMenu.querySelector('a');
+      firstLink?.focus();
+    } else {
+      mobileMenuBtn.focus();
+    }
+  };
+  
   mobileMenuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+    const isOpen = !mobileMenu?.classList.contains('hidden');
+    setMenuState(!isOpen);
   });
   
   const mobileLinks = mobileMenu?.querySelectorAll('a');
   mobileLinks?.forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
+      setMenuState(false);
     });
+  });
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (!mobileMenu || mobileMenu.classList.contains('hidden')) return;
+    setMenuState(false);
   });
   
   // Cambiar estilo del nav al hacer scroll con mejor visibilidad
