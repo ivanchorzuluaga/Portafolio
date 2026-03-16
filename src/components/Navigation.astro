@@ -81,7 +81,7 @@ const navItems = [
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   
-  const setMenuState = (open) => {
+  const setMenuState = (open: boolean) => {
     if (!mobileMenu || !mobileMenuBtn) return;
     mobileMenu.classList.toggle('hidden', !open);
     mobileMenu.setAttribute('aria-hidden', String(!open));
@@ -113,7 +113,6 @@ const navItems = [
   });
   
   // Cambiar estilo del nav al hacer scroll con mejor visibilidad
-  let lastScroll = 0;
   const nav = document.querySelector('nav');
   
   window.addEventListener('scroll', () => {
@@ -127,6 +126,5 @@ const navItems = [
       nav?.classList.add('shadow-lg', 'shadow-black/50');
     }
     
-    lastScroll = currentScroll;
   });
 </script>

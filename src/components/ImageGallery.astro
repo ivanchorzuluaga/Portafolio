@@ -125,15 +125,15 @@ if (!images || images.length === 0) return null;
     const counterEl = root.querySelector("[data-gallery-counter]");
     const thumbs = root.querySelectorAll("[data-gallery-thumb]");
     let index = 0;
-    let lastActive = null;
+    let lastActive: HTMLElement | null = null;
 
-    const getFocusable = () => {
+    const getFocusable = (): HTMLElement[] => {
       if (!modal) return [];
       return Array.from(
         modal.querySelectorAll(
           'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         )
-      ).filter((el) => !el.hasAttribute('disabled'));
+      ).filter((el): el is HTMLElement => el instanceof HTMLElement && !el.hasAttribute('disabled'));
     };
     
     const sync = () => {
@@ -149,7 +149,7 @@ if (!images || images.length === 0) return null;
 
     const open = () => {
       if (!modal) return;
-      lastActive = document.activeElement;
+      lastActive = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       modal.classList.remove("hidden");
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
